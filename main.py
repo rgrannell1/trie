@@ -19,9 +19,11 @@ class Trie:
     cursor = self
     for char in key:
       if char not in cursor.children:
-        cursor.children[char] = Trie()
-        self.descendants += 1
-
+        child = Trie()
+        child.descendants = 1
+        cursor.children[char] = child
+  
+      cursor.descendants += 1
       cursor = cursor.children[char]
 
     cursor.size += 1
